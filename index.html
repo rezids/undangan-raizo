@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Ulang Tahun Raizo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Fredoka', sans-serif;
+      background: url('https://images.unsplash.com/photo-1581092795360-4d24b3e4d1f7?auto=format&fit=crop&w=1600&q=80') repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      position: relative;
+      color: #333;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(255,255,255,0.6);
+      z-index: -1;
+    }
+    /* Header dengan background excavator dan overlay kuning */
+    header {
+      position: relative;
+      color: #333;
+      text-align: center;
+      padding: 40px 20px 80px 20px;
+      background:
+        linear-gradient(rgba(252, 215, 45, 0.8), rgba(252, 215, 45, 0.8)),
+        url('https://pngimg.com/uploads/excavator/excavator_PNG68.png') no-repeat center bottom;
+      background-size: contain;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      min-height: 220px;
+    }
+    header h1, header h2, header p {
+      position: relative;
+      z-index: 1;
+      margin: 10px 0 5px 0;
+      text-shadow: 0 0 5px #fff;
+    }
+    header img {
+      position: relative;
+      z-index: 1;
+      width: 80px;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+    .photos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+    }
+    .photos img {
+      width: 250px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .photos img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+    .details, .rsvp, .countdown {
+      padding: 20px;
+      text-align: center;
+      background-color: #fff9c4cc;
+      margin: 20px auto;
+      border-radius: 15px;
+      max-width: 600px;
+      box-sizing: border-box;
+    }
+    .rsvp-button {
+      display: inline-block;
+      background-color: #fcd72d;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+      transition: background-color 0.3s ease;
+      word-break: break-word;
+    }
+    .rsvp-button:hover {
+      background-color: #e6bc23;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+    }
+    .footer img {
+      width: 150px;
+      max-width: 100%;
+      height: auto;
+    }
+    #playMusic {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      background: #fcd72d;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 30px 15px 70px 15px;
+        min-height: 180px;
+        background-position: center bottom;
+      }
+      .photos {
+        gap: 10px;
+        padding: 15px;
+      }
+      .photos img {
+        width: 45vw; /* 45% viewport width */
+      }
+      .details, .rsvp, .countdown {
+        margin: 15px 10px;
+        padding: 15px;
+        max-width: 90vw;
+      }
+    }
+    @media (max-width: 480px) {
+      header {
+        padding: 25px 10px 60px 10px;
+        min-height: 160px;
+      }
+      header img {
+        width: 60px;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header h2 {
+        font-size: 1.2rem;
+      }
+      .photos img {
+        width: 90vw;
+      }
+      .rsvp-button {
+        padding: 12px 16px;
+        font-size: 1rem;
+        word-break: break-word;
+      }
+      #playMusic {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Tombol Musik -->
+<button id="playMusic" style="display:none;">🎵 Mainkan Musik</button>
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_731cbbe89f.mp3?filename=happy-birthday-to-you-piano-version-13241.mp3" type="audio/mpeg">
+  Browser Anda tidak mendukung audio.
+</audio>
+
+<!-- Header -->
+<header>
+  <img src="logo-tk-azzuhra.png" alt="Logo TK AzZuhra">
+  <h1>Undangan Ulang Tahun</h1>
+  <h2>Raizo Radellio 🎉🎂</h2>
+  <p>Yuk datang ke pesta ulang tahunku!</p>
+</header>
+
+<!-- Foto -->
+<div class="photos">
+  <img src="raizo1.jpg" alt="Foto Raizo 1">
+  <img src="raizo2.jpg" alt="Foto Raizo 2">
+  <img src="raizo3.jpg" alt="Foto Raizo 3">
+</div>
+
+<!-- Countdown Timer -->
+<div class="countdown">
+  Waktu menuju pesta ulang tahun: <span id="timer"></span>
+</div>
+
+<!-- Detail Lokasi -->
+<div class="details">
+  <h3>📍 TK AzZuhra</h3>
+  <p>10 Juni 2025 | Pukul 10.00 WIB</p>
+  <a href="https://g.co/kgs/u6LaEC7" target="_blank" class="rsvp-button">Lihat di Google Maps</a>
+</div>
+
+<!-- RSVP -->
+<div class="rsvp">
+  <p>Konfirmasi kehadiran ya ke nomor:</p>
+  <a href="tel:081270351918" class="rsvp-button">0812 7035 1918</a>
+</div>
+
+<!-- Footer Excavator -->
+<div class="footer">
+  <img src="https://pngimg.com/uploads/excavator/excavator_PNG68.png" alt="Excavator">
+</div>
+
+<!-- Countdown Script -->
+<script>
+  function updateCountdown() {
+    const eventDate = new Date('June 10, 2025 10:00:00').getTime();
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("timer").innerText = "Acara sedang berlangsung!";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerText = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+<!-- Confetti Script -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  window.onload = () => {
+    let duration = 5 * 1000;
+    let animationEnd = Date.now() + duration;
+    let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    let interval = setInterval(function () {
+      let timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      confetti(Object.assign({}, defaults, {
+        particleCount: 50,
+        origin: {
+          x: randomInRange(0.1, 0.9),
+          y: Math.random() - 0.2
+        }
+      }));
+    }, 250);
+  };
+</script>
+
+<!-- Audio Script -->
+<script>
+  const music = document.getElementById('bgMusic');
+  const playBtn = document.getElementById('playMusic');
+
+ window.addEventListener('load', () => {
+  // Coba putar musik
+  music.play().then(() => {
+    // Jika berhasil autoplay, tombol disembunyikan
+    playBtn.style.display = 'none';
+  }).catch(() => {
+    // Jika gagal autoplay (karena browser blocking), tombol muncul agar user bisa klik
+    playBtn.style.display = 'block';
+  });
+});
+
+
+  playBtn.addEventListener('click', () => {
+    music.play();
+    playBtn.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
